@@ -56,3 +56,10 @@ var P_Error P_Err_Mean;
 
 run; quit;
 
+
+proc export 
+  data=ins 
+  dbms=xlsx 
+  outfile="/folders/myshortcuts/code/Predict 411/Auto Insurance/Data/ins" 
+  replace;
+run;
