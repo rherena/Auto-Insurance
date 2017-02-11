@@ -30,7 +30,7 @@ model train_response (ref="0") =   AGE_B
 								URBANICITY_1/
 selection=Forward slentry=0.05 slstay=0.05;
 output out = ins
-	P=P_Accident;
+	P=P_train_response;
 run;
 quit;
 
@@ -42,7 +42,7 @@ run; quit;
 data ins;
 set ins;
 
-P_Error = abs(TARGET_FLAG - P_Accident);
+P_Error = abs(TARGET_FLAG - P_train_response);
 P_Err_Mean = abs(TARGET_FLAG - 0.2638157);
 
 
@@ -56,3 +56,37 @@ var P_Error P_Err_Mean;
 
 run; quit;
 
+*** Models 1 - 3;
+
+proc logistic data=ins;
+model TARGET_FLAG (ref="0") =   EDUCATION_L
+								HOMEKIDS_1
+								HOME_OWNER
+								INCOME_B
+								KIDSDRIV_1
+								MSTATUS_1
+								YOJ_1
+														
+								CAR_USE_1
+								CLM_5YR
+								TIF_B
+								
+								MVR_PTS
+								REVOKED_1
+								
+								TRAVTIME_B
+								URBANICITY_1;
+output out = ins
+	P=P_M1;
+run;
+quit;
+
+
+
+
+proc export 
+  data=ins 
+  dbms=xlsx 
+  outfile="/folders/myshortcuts/code/Predict 411/Auto Insurance/Data/ins" 
+  replace;
+run;
