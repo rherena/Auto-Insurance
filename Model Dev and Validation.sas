@@ -57,7 +57,7 @@ var P_Error P_Err_Mean;
 run; quit;
 
 *** Models 1 - 3;
-
+*** Model 1 - Full Model;
 proc logistic data=ins;
 model TARGET_FLAG (ref="0") =   EDUCATION_L
 								HOMEKIDS_1
@@ -81,11 +81,56 @@ output out = ins
 run;
 quit;
 
+*** Model 2 - TIF and Home Kids Excl;
+proc logistic data=ins;
+model TARGET_FLAG (ref="0") =   EDUCATION_L
+								
+								HOME_OWNER
+								INCOME_B
+								KIDSDRIV_1
+								MSTATUS_1
+								YOJ_1
+														
+								CAR_USE_1
+								CLM_5YR
+								
+								
+								MVR_PTS
+								REVOKED_1
+								
+								TRAVTIME_B
+								URBANICITY_1;
+output out = ins
+	P=P_M2;
+run;
+quit;
+
+** Model 3 the least inclusive;
+proc logistic data=ins;
+model TARGET_FLAG (ref="0") =   INCOME_B
+								KIDSDRIV_1
+								CAR_USE_1
+								CLM_5YR
+
+								REVOKED_1
+								
+								TRAVTIME_B
+								URBANICITY_1;
+output out = ins
+	P=P_M3;
+run;
+quit;
 
 
+data inse;
+set ins;
+
+keep TARGET_FLAG P_M1 P_M2 P_M3;
+
+run;
 
 proc export 
-  data=ins 
+  data=inse 
   dbms=xlsx 
   outfile="/folders/myshortcuts/code/Predict 411/Auto Insurance/Data/ins" 
   replace;
