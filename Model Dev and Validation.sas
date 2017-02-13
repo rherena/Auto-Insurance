@@ -112,6 +112,7 @@ model TARGET_FLAG (ref="0") =   INCOME_B
 								CAR_USE_1
 								CLM_5YR
 
+								MVR_PTS
 								REVOKED_1
 								
 								TRAVTIME_B
