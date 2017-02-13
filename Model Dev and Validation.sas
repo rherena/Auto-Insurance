@@ -125,7 +125,7 @@ quit;
 data inse;
 set ins;
 
-keep TARGET_FLAG P_M1 P_M2 P_M3;
+keep train TARGET_FLAG P_M1 P_M2 P_M3;
 
 run;
 

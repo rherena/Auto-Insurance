@@ -1,5 +1,5 @@
-### Ricardo Herena
-### EDA
+*** Ricardo Herena
+*** EDA;
 
 
 proc means data=ins min max mean median std N NMISS;
@@ -31,7 +31,12 @@ class HOMEKIDS_1;
 var TARGET_FLAG;
 run; quit;
 
-*** Years on the job greater than 1. 
+*** Years on the job greater than 1. ;
+proc means data=ins min max mean median std N NMISS;
+class YOJ;
+var TARGET_FLAG;
+run; quit;
+
 proc means data=ins min max mean median std N NMISS;
 class YOJ_1;
 var TARGET_FLAG;
@@ -159,7 +164,7 @@ class JOB;
 var TARGET_FLAG INCOME;
 run; quit;
 
-*** Marital Status
+*** Marital Status;
 proc means data=ins min max mean median std N NMISS;
 class MSTATUS;
 var TARGET_FLAG;
@@ -209,17 +214,6 @@ proc means data=ins min max mean median std N NMISS;
 class URBANICITY_1;
 var TARGET_FLAG;
 run; quit;
-
-
-
-
-
-
-
-
-
-
-
 
 
 

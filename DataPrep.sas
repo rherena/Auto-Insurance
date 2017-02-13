@@ -184,6 +184,11 @@ if URBANICITY = 'Highly Urban/ Urban' then URBANICITY_1 = 1;
 else URBANICITY_1 = 0;
 
 
+TARGET_AMT_l = log(TARGET_AMT);
+
+BLUEBOOK_l = log(BLUEBOOK);
+
+if TARGET_AMT = 0 then TARGET_AMT = .;
 
 run;
 
